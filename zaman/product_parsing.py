@@ -35,13 +35,6 @@ def load_page(url: str):
     r = requests.get(url, headers=HEADERS)
     return r.text
 
-def html_code(data):
-  
-    soup = BeautifulSoup(data, 'html.parser')
-  
-    # display html code
-    return (soup)
-
 def get_products(search: str) -> [str]:
     pass
 
