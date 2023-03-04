@@ -1,4 +1,5 @@
 import requests
+import json
 
 HEADERS = (
     {
@@ -25,18 +26,48 @@ HEADERS = (
     }
 )
 
-def save_input_to_file(user_input):
-    # Open a file for writing
-    with open('saved_input.txt', 'w') as file:
-        # Write the user input to the file
-        file.write(user_input)
+class Project:
+    def __init__(self, name, rating, price):
+        self.name = name
+        self.rating = rating
+        self.price = price
+    
+    def __repr__(self):
+        return f"Project(name='{self.name}', rating={self.rating}, price={self.price})"
 
-def load_page(url: str):
+def get_url(topic: str, page: int, count: int = 100) -> str:
+    return "https://apim.canadiantire.ca/v1/search/search?q={0};page={1};store=659;lang=en_CA;count={2}".format(topic, page, count)
+
+def get_data(url: str):
     r = requests.get(url, headers=HEADERS)
     return r.text
 
-def get_products(search: str) -> [str]:
-    pass
+def parse_json(raw: str):
+    return json.loads(raw)
+
+def extract_products(products) -> [Project]:
+    data = []
+
+    for product in products:
+        if product["type"] == "PRODUCT":
+            name = product["title"]
+            rating = product["rating"]
+            price = product["currentPrice"]["value"]
+
+            data.append(Project(name, rating, price))
+    
+    return data
 
 if __name__ == "__main__":
-    print(load_page("https://apim.canadiantire.ca/v1/search/search?q=gardening;page=1;store=659;lang=en_CA;count=24"))
+
+    url = get_url("gardening",2)
+    raw_data = get_data(url)
+    products = parse_json(raw_data)["products"]
+
+    print(len(products))
+
+    products = extract_products(products)
+    
+    for p in products:
+        print(p)
+
