@@ -37,8 +37,8 @@ class Product:
     def __repr__(self):
         return f"Product(name='{self.name}', rating={self.rating}, price={self.price}, image='{self.image}', url='{self.url}')"
 
-    def __str__(self):
-        return f"{self.name[:10]}..." if len(self.name) > 10 else self.name
+    # def __str__(self):
+    #     return f"{self.name[:10]}..." if len(self.name) > 10 else self.name
     
 def get_url(topic: str, page: int, count: int = 10) -> str:
     return "https://apim.canadiantire.ca/v1/search/search?q={0};page={1};store=659;lang=en_CA;count={2}".format(topic, page, count)
