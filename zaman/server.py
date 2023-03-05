@@ -143,7 +143,7 @@ def user_bundle_data():
         val_1 = products.products[0]
         val_1 = {
             "name": val_1.name,
-            "OG": format_money(format_money),
+            "OG": format_money(val_1.price),
             "new": format_money(val_1.discounted_price()),
             "url": val_1.url,
             "img": val_1.image 
