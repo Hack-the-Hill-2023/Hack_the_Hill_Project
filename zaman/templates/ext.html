@@ -14,34 +14,34 @@ body{background-color:#EAEFE8}h2{margin-left:47px}div{display:flex;flex-directio
         
         <div class="cards">
             <a class="card">
-                <label id="name">name 1</label>
-                <img>
-                <label id="new">New price</label>
-                <label id="og">OG price</label>
+                <label id="name">{{ data['val_1']['name'] }}</label>
+                <img src="{{ data['val_1']['img'] }}">
+                <label id="new">{{ data['val_1']['new'] }}</label>
+                <label id="og">{{ data['val_1']['OG'] }}</label>
             </a>
             <a class="card">
-                <label id="name">name 1</label>
-                <img>
-                <div id="new">New price</div>
-                <div id="og">OG price</div>
+                <label id="name">{{ data['val_2']['name'] }}</label>
+                <img src="{{ data['val_2']['img'] }}">
+                <div id="new">{{ data['val_2']['new'] }}</div>
+                <div id="og">{{ data['val_2']['OG'] }}</div>
             </a>
             <a class="card">
-                <label id="name">name 1</label>
-                <img>
-                <div id="new">New price</div>
-                <div id="og">OG price</div>
+                <label id="name">{{ data['val_3']['name'] }}</label>
+                <img src="{{ data['val_3']['img'] }}">
+                <div id="new">{{ data['val_3']['new'] }}</div>
+                <div id="og">{{ data['val_3']['OG'] }}</div>
             </a>
         </div>
 
         <div id="main_price">
             <div>For you</div>
-            <div>Price</div>
-            <div>old price</div>
+            <div>{{ data['new'] }}</div>
+            <div>{{ data['OG'] }}</div>
         </div>
 
         <div>
             <button>Add to Cart</button>
-            <div>Offer expires</div>
+            <div>Offer expires in {{ data['expiry_date'] }}</div>
         </div>
     </div>
     {# a comment #}

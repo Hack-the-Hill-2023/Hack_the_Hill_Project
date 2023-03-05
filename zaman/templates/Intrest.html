@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>All Inrests For {username}</title>
+<title>All Clients</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/x-icon" href="./assets/images/CanadianTireLogo.png">
+<img class="canadianTireLogo" src="https://media-www.canadiantire.ca/logo/ct-brandmark-standard-primary-rgw-pos-hex-5f6ce5ad-aadc-44da-9d55-a06d4c6273bb.svg">
+
 
 <style>
+*{
+    text-overflow: clip;
+}
 .header {
     background-color: #262626;
     position: absolute;
@@ -48,21 +52,21 @@
 }
 .item {
     display: flex;
-    width: 100%;
     height: 60px;
-    background-color: #D5DAD4;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 }
-.itemFirstElement {
-    margin-left: 10px;
+.item > div {
+    display: flex;
 }
-.item > p {
+.item > div > p {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
+    margin: 5px;
 }
 .itemButton {
     width: 40px;
@@ -74,7 +78,9 @@
     align-items: center;
     margin-right: 45px;
 }
-
+.itemButton > img {
+    
+}
 </style>
 </head>
 
@@ -83,14 +89,55 @@
     <img class="canadianTireLogo" src="./assets/images/CanadianTireLogo.png">
     <h1 class="headerTitle">CANADIAN TIRE DEVELOPER TOOL</h1>
 </div>
-<h2 class="listHeader">All Intrests for {username}</h2>
+<h2 class="listHeader">Bundle for {{ data.user }} with interest "{{ data.interest }}"</h2>
 
 <div class="listContainer">
-    <div class="item" onclick="alert('Item clicked')">
-        <p class="itemFirstElement">0</p>
-        <p>Soccer</p>
-        <div class="itemButton" >
-            <img src="./assets/images/Arrow 3.png">
+    <div class="item">
+        <div>
+            <p>Product 1 : </p>
+            <p> {{ data.val_1.name }}</p>
+        </div>
+
+        <div>
+            <p>Price : </p>
+            <p> {{ data.val_1.OG }}</p>
+        </div>
+
+        <div>
+            <p>Price with discount : </p>
+            <p> {{ data.val_1.new }}</p>
+        </div>
+    </div>
+    <div class="item">
+        <div>
+            <p>Product 2 : </p>
+            <p> {{ data.val_2.name }}</p>
+        </div>
+
+        <div>
+            <p>Price : </p>
+            <p> {{ data.val_2.OG }}</p>
+        </div>
+
+        <div>
+            <p>Price with discount : </p>
+            <p> {{ data.val_2.new }}</p>
+        </div>
+    </div>
+    <div class="item">
+        <div>
+            <p>Product 3 : </p>
+            <p> {{ data.val_3.name }}</p>
+        </div>
+
+        <div>
+            <p>Price : </p>
+            <p> {{ data.val_3.OG }}</p>
+        </div>
+
+        <div>
+            <p>Price with discount : </p>
+            <p> {{ data.val_3.new }}</p>
         </div>
     </div>
 </div>

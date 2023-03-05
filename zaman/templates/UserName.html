@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>All Clients</title>
+<title>All Inrests For {username}</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/x-icon" href="./assets/images/CanadianTireLogo.png">
@@ -54,9 +54,7 @@
     align-items: center;
     justify-content: space-between;
 }
-.item > img {
-    height: 25px;
-    width: 25px;
+.itemFirstElement {
     margin-left: 10px;
 }
 .item > p {
@@ -76,9 +74,7 @@
     align-items: center;
     margin-right: 45px;
 }
-.itemButton > img {
-    
-}
+
 </style>
 </head>
 
@@ -87,18 +83,18 @@
     <img class="canadianTireLogo" src="./assets/images/CanadianTireLogo.png">
     <h1 class="headerTitle">CANADIAN TIRE DEVELOPER TOOL</h1>
 </div>
-<h2 class="listHeader">All Client List</h2>
+<h2 class="listHeader">All Intrests for {{ data.user }}</h2>
 
 <div class="listContainer">
-    <div class="item" onclick="alert('Item clicked')">
-        <img src="./assets/images/User.png">
-        <p>0</p>
-        <p>Joe Daniel</p>
-        <p>Interests :  Soccer, Kitchen, Coffee Accessory, bolts</p>
+    {% for intrest in data.data %}
+    <div class="item" onclick="location.href= 'http://localhost:5000/devtool/{{ data.user }}/{{intrest[1]}}'">
+        <p class="itemFirstElement">{{ intrest[0] }}</p>
+        <p>{{ intrest[1] }}</p>
         <div class="itemButton" >
             <img src="./assets/images/Arrow 3.png">
         </div>
     </div>
+    {% endfor %}
 </div>
 
 </body>
