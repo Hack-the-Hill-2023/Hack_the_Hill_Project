@@ -26,16 +26,21 @@ HEADERS = (
     }
 )
 
-class Project:
-    def __init__(self, name, rating, price):
+class Product:
+    def __init__(self, name, rating, price, image, url):
         self.name = name
         self.rating = rating
         self.price = price
+        self.image = image
+        self.url = url
     
     def __repr__(self):
-        return f"Project(name='{self.name}', rating={self.rating}, price={self.price})"
+        return f"Product(name='{self.name}', rating={self.rating}, price={self.price}, image='{self.image}', url='{self.url}')"
 
-def get_url(topic: str, page: int, count: int = 100) -> str:
+    # def __str__(self):
+    #     return f"{self.name[:10]}..." if len(self.name) > 10 else self.name
+    
+def get_url(topic: str, page: int, count: int = 10) -> str:
     return "https://apim.canadiantire.ca/v1/search/search?q={0};page={1};store=659;lang=en_CA;count={2}".format(topic, page, count)
 
 def get_data(url: str):
@@ -45,28 +50,34 @@ def get_data(url: str):
 def parse_json(raw: str):
     return json.loads(raw)
 
-def extract_products(products) -> [Project]:
+def extract_products(products) -> [Product]:
     data = []
 
-    for product in products:
-        if product["type"] == "PRODUCT":
-            name = product["title"]
-            rating = product["rating"]
-            price = product["currentPrice"]["value"]
+    if products != None:
+        for product in products:
+            
+            if product["type"] == "PRODUCT":
+                name = product["title"]
+                rating = product["rating"]
+                price = product["currentPrice"]["value"]
+                image = product["images"][0]["url"] if len(product["images"]) > 0 else ""
+                url = "https://www.canadiantire.ca"+product["url"]
 
-            data.append(Project(name, rating, price))
-    
+                data.append(Product(name, rating, price, image, url))
+        
     return data
 
-if __name__ == "__main__":
+def get_products(item: str) -> [Product]:
+    url = get_url(item, 1)
 
-    url = get_url("gardening",2)
     raw_data = get_data(url)
+    
     products = parse_json(raw_data)["products"]
 
-    print(len(products))
+    return extract_products(products)
 
-    products = extract_products(products)
+if __name__ == "__main__":
+    products = get_products("gardening")
     
     for p in products:
         print(p)
