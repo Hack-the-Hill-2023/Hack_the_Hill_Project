@@ -25,7 +25,7 @@ class Bundle:
 
 
 def create_bundle_raw(product: str, response_size: int = 50) -> str :
-    openai.api_key = "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"
+    openai.api_key = "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"
 
     prompt = "name {0} products someone would buy with this:{1}".format(response_size, product)
 
@@ -68,4 +68,4 @@ def percent_off(percent: float):
 if __name__ == "__main__":
 
     ten_off = percent_off(0.1)
-    print(Bundle(project_to_bundle(create_bundle_raw("garden")), ten_off))
+    print(Bundle(project_to_bundle(create_bundle_raw("bike")), ten_off))
