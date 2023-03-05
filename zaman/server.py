@@ -15,6 +15,20 @@ def random_time_string():
     second = random.randint(0, 59)
     return f"{hour:02d} : {minute:02d} : {second:02d}"
 
+def format_money(num):
+    return f'${num:.2f}'
+
+def sum_money(s1, s2, s3):
+    # Remove the dollar sign from each string and convert to a float
+    f1 = float(s1[1:])
+    f2 = float(s2[1:])
+    f3 = float(s3[1:])
+
+    # Add up the three floats
+    total = f1 + f2 + f3
+
+    # Format the total as a string with two decimal places and a dollar sign
+    return f"${total:.2f}"
 app = Flask(__name__)
 
 @app.route('/devtool')
@@ -68,8 +82,8 @@ def user_bundle(user_name,interest):
     val_1 = products.products[0]
     val_1 = {
         "name": val_1.name,
-        "OG": val_1.price,
-        "new": val_1.discounted_price(),
+        "OG": format_money(val_1.price),
+        "new": format_money(val_1.discounted_price()),
         "url": val_1.url,
         "img": val_1.image 
     }
@@ -77,8 +91,8 @@ def user_bundle(user_name,interest):
     val_2 = products.products[1]
     val_2 = {
         "name": val_2.name,
-        "OG": val_2.price,
-        "new": val_2.discounted_price(),
+        "OG": format_money(val_2.price),
+        "new": format_money(val_2.discounted_price()),
         "url": val_2.url,
         "img": val_2.image 
     }
@@ -86,8 +100,8 @@ def user_bundle(user_name,interest):
     val_3 = products.products[2]
     val_3 = {
         "name": val_3.name,
-        "OG": val_3.price,
-        "new": val_3.discounted_price(),
+        "OG": format_money(val_3.price),
+        "new": format_money(val_3.discounted_price()),
         "url": val_3.url,
         "img": val_3.image 
     }
@@ -96,8 +110,8 @@ def user_bundle(user_name,interest):
         "val_1": val_1,
         "val_2": val_2,
         "val_3": val_3,
-        "OG": val_1["OG"] + val_2["OG"] + val_3["OG"],
-        "new": val_1["new"] + val_2["new"] + val_3["new"],
+        "OG": sum_money(val_1["OG"], val_2["OG"], val_3["OG"]),
+        "new": sum_money(val_1["new"], val_2["new"], val_3["new"]),
         "expiry_date": random_time_string(),
         "user": user_name,
         "interest": interest
@@ -129,8 +143,8 @@ def user_bundle_data():
         val_1 = products.products[0]
         val_1 = {
             "name": val_1.name,
-            "OG": val_1.price,
-            "new": val_1.discounted_price(),
+            "OG": format_money(format_money),
+            "new": format_money(val_1.discounted_price()),
             "url": val_1.url,
             "img": val_1.image 
         }
@@ -138,8 +152,8 @@ def user_bundle_data():
         val_2 = products.products[1]
         val_2 = {
             "name": val_2.name,
-            "OG": val_2.price,
-            "new": val_2.discounted_price(),
+            "OG": format_money(val_2.price),
+            "new": format_money(val_2.discounted_price()),
             "url": val_2.url,
             "img": val_2.image 
         }
@@ -147,8 +161,8 @@ def user_bundle_data():
         val_3 = products.products[2]
         val_3 = {
             "name": val_3.name,
-            "OG": val_3.price,
-            "new": val_3.discounted_price(),
+            "OG": format_money(val_3.price),
+            "new": format_money(val_3.discounted_price()),
             "url": val_3.url,
             "img": val_3.image 
         }
@@ -157,8 +171,8 @@ def user_bundle_data():
             "val_1": val_1,
             "val_2": val_2,
             "val_3": val_3,
-            "OG": val_1["OG"] + val_2["OG"] + val_3["OG"],
-            "new": val_1["new"] + val_2["new"] + val_3["new"],
+            "OG": sum_money(val_1["OG"], val_2["OG"], val_3["OG"]),
+            "new": sum_money(val_1["new"], val_2["new"], val_3["new"]),
             "expiry_date": random_time_string()
         }
 

@@ -25,7 +25,7 @@ class Bundle:
 
 
 def create_bundle_raw(product: str, response_size: int = 50) -> str :
-    openai.api_key = "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"
+    openai.api_key = "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"
 
     prompt = "name {0} products someone would buy with this:{1}".format(5, product)
 
