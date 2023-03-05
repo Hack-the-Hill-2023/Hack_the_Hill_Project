@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>All Clients</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="./assets/images/CanadianTireLogo.png">
+
+<style>
+.header {
+    background-color: #262626;
+    position: absolute;
+    width: 100%;
+    height: 130px;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.canadianTireLogo {
+    margin-left: 25px;
+    margin-top: 16px;
+    width: 95.62px;
+    height: 85px;
+    
+}
+.headerTitle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 42px;
+    flex: 2;
+    text-align: center;
+    color: white;
+}
+.listHeader {
+    margin-top: 200px;
+    margin-left: 35px;
+}
+.listContainer {
+    margin-right: 35px;
+    margin-left: 35px;
+    background-color: #EAEFE8;
+    height: 1000px;
+    width: calc(100% - 70px);
+}
+.item {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    background-color: #D5DAD4;
+    align-items: center;
+    justify-content: space-between;
+}
+.item > img {
+    height: 25px;
+    width: 25px;
+    margin-left: 10px;
+}
+.item > p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+}
+.itemButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #D81E05;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 45px;
+}
+.itemButton > img {
+    
+}
+</style>
+</head>
+
+<body>
+<div class="header">
+    <img class="canadianTireLogo" src="./assets/images/CanadianTireLogo.png">
+    <h1 class="headerTitle">CANADIAN TIRE DEVELOPER TOOL</h1>
+</div>
+<h2 class="listHeader">All Client List</h2>
+
+<div class="listContainer">
+    <div class="item" onclick="alert('Item clicked')">
+        <img src="./assets/images/User.png">
+        <p>0</p>
+        <p>Joe Daniel</p>
+        <p>Interests :  Soccer, Kitchen, Coffee Accessory, bolts</p>
+        <div class="itemButton" >
+            <img src="./assets/images/Arrow 3.png">
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
