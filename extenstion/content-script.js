@@ -9,6 +9,7 @@ let iframe = document.createElement("iframe")
 
 iframe.style.border = "none"
 iframe.style.width = "100%"
+iframe.style.minHeight = "300px"
 
 iframe.setAttribute("src", "http://127.0.0.1:5000/ext");
 
