@@ -1,0 +1,17 @@
+$margin_left: 47px;
+
+h2 {
+    margin-left: $margin_left;
+}
+
+div {
+    display: flex;
+
+    flex-direction: row;
+
+    width: 100%;
+
+    .card {
+
+    }
+}

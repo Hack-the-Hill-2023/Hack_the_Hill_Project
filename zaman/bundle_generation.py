@@ -27,7 +27,7 @@ class Bundle:
 def create_bundle_raw(product: str, response_size: int = 50) -> str :
     openai.api_key = "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"
 
-    prompt = "name {0} products someone would buy with this:{1}".format(response_size, product)
+    prompt = "name {0} products someone would buy with this:{1}".format(3, product)
 
     response = openai.Completion.create(model="text-davinci-003", prompt=prompt, temperature=0, max_tokens=50)
 
