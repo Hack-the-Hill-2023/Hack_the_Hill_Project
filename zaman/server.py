@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify, make_response, render_template
 import json
 
 app = Flask(__name__)
@@ -18,12 +18,15 @@ def user_bundle(user_name,interest):
 @app.route('/ext', methods=['GET', 'OPTIONS'])
 def user_bundle_data():
 
-    messages = {}
+    messages = ""
 
     if request.method == 'GET':
-        messages["data"] = "Hello world"
+        messages = render_template('ext.html', data = {})
 
-    resp = make_response(jsonify(messages), 200)
+    resp = make_response(messages, 200)
+
+    if request.method == 'GET':
+        resp.headers['Content-Type'] = 'text/html'
 
     resp.headers['Access-Control-Allow-Origin'] = '*'
     resp.headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
