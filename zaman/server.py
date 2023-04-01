@@ -4,8 +4,8 @@ import json
 
 from Json_Parser import parser as give_me_one_bb
 from bundle_generation import Bundle, create_bundle_raw, percent_off, project_to_bundle 
-from git_all_interets_for_all_users import parser as give_me_all_bb
-from git_all_interests_for_user import parser as give_me_all_intrests_bb
+from get_all_interets_for_all_users import parser as give_me_all_bb
+from get_all_interests_for_user import parser as give_me_all_intrests_bb
 
 import random
 
