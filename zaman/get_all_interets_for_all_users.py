@@ -4,6 +4,9 @@ filename = 'zaman\generated.json'
 
 
 def parser():
+    """
+    parser gets all intrests for every customer in the generated.json dataset
+    """
     fcc_data = None
     array= []
 
