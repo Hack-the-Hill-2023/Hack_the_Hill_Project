@@ -2,30 +2,57 @@ import random
 import openai
 
 from product_parser import Product, get_products
+
 class DiscountedProduct(Product):
+    """
+    Discounted Product stores state of a discounted product
+    """
     def __init__(self, name, rating, price, image, url, discount):
+        """
+        :param name: Canadian tire product name
+        :param rating: Rating of product
+        :param price: intial price of product
+        :param image: url of product image
+        :param url: url of canadian tire product
+        """
         super().__init__(name, rating, price, image, url)
         self.discount = discount
         
     def discounted_price(self):
+        """
+        discounted_price calculates the discounted price of product
+        """
         return self.price * (1 - self.discount)
     
     def __repr__(self):
         return f"DiscountedProduct(name='{self.name}', rating={self.rating}, price={self.price}, image='{self.image}', url='{self.url}', discount={self.discount})"
 
 class Bundle:
-    def __init__(self, project_list: [Product], discount_calc):
-        self.products = [discount_calc(project, project_list) for project in project_list]
+    """
+    Bundle is a clsss that stores list of discounted product & associated methods
+    """
+    def __init__(self, product_list: [Product], discount_calc):
+        """
+        :param product_list: List of products
+        :param discount_calc: discount function used to convert Product -> DiscountedProduct. discount_calc: (product, product_list) -> DiscountedProduct, where product ϵ product_list And product is an instance of Product 
+        """
+        self.products = [discount_calc(product, product_list) for product in product_list]
     
     def __repr__(self):
         products_str = ', '.join([f'{p.name} ({p.price}) => ({p.discounted_price()})' for p in self.products])
 
-        print(products_str)
+        #print(products_str)
         return f"Bundle(products=[{products_str}])"
 
 
-def create_bundle_raw(product: str, response_size: int = 50) -> str :
-    openai.api_key = "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"
+def create_bundle_raw(product: str, response_size: int = 50) -> [str] :
+    """
+    create_bundle_raw function returns a list of names of products someone would purchase with the intial product seed
+    
+    :param product: Intial product to seed the response
+    :param response_size: maximum character response from openAI
+    """
+    openai.api_key = "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" #API key needs to be replaced with env variable & current API key doesn't work
 
     prompt = "name {0} products someone would buy with this:{1}".format(5, product)
 
@@ -42,6 +69,11 @@ def create_bundle_raw(product: str, response_size: int = 50) -> str :
     return [val[1][1:] for val in filtered_text]
 
 def project_to_bundle(products: [str]) -> [Product]:
+    """
+    project_to_bundle converts a list of strings into a list of products using the Canadian Tire search REST API
+    
+    :param products: list of string that repersents the name of product
+    """
     data = []
 
     for product in products:
@@ -59,6 +91,11 @@ def project_to_bundle(products: [str]) -> [Product]:
     return data
 
 def percent_off(percent: float):
+    """
+    percent_off is an higher order function that returns a function that calculates a flat discount on all product
+    
+    THis is to ensure the algorithm can be easily swaped out with a more intuitive model in the future
+    """
     def func(val: Product, og: [Product]):
         return DiscountedProduct(val.name, val.rating, val.price, val.image, val.url, percent)
 
