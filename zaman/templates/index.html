@@ -14,6 +14,7 @@ function redirect(username) {
 
 </script>
 
+<!-- We had problems of getting flask to send CSS files -->
 <style>
 .header {
     background-color: #262626;
@@ -97,6 +98,7 @@ function redirect(username) {
 </div>
 <h2 class="listHeader">All Client List</h2>
 
+<!-- List of all users and their top intrest -->
 <div class="listContainer">
     {% for client in data %}
     <div class="item" onclick="location.href= 'http://localhost:5000/devtool/{{ client[1] }}'">
