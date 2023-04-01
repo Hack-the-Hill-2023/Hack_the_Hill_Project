@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/x-icon" href="./assets/images/CanadianTireLogo.png">
 
+<!-- We had problems of getting flask to send CSS files -->
 <style>
 .header {
     background-color: #262626;
@@ -86,6 +87,7 @@
 <h2 class="listHeader">All Intrests for {{ data.user }}</h2>
 
 <div class="listContainer">
+    <!-- Lists all mock users and all their top 3 intrests -->
     {% for intrest in data.data %}
     <div class="item" onclick="location.href= 'http://localhost:5000/devtool/{{ data.user }}/{{intrest[1]}}'">
         <p class="itemFirstElement">{{ intrest[0] }}</p>
