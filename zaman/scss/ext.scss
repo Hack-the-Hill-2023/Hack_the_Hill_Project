@@ -1,5 +1,6 @@
 $margin_left: 47px;
 
+//setting iframe background
 body{
     background-color: #EAEFE8;
 }
@@ -8,6 +9,7 @@ h2 {
     margin-left: $margin_left;
 }
 
+// scss for main content area after h2
 div {
     display: flex;
 
@@ -21,11 +23,12 @@ div {
         align-self: center;
     }
 
+    // div of card container
     > .cards {
         height: 80vh;
         
         flex-direction: row;
-         >.card {
+         > .card {//card div stores an item
         
             width: 95px;
             padding: 5px;
@@ -49,19 +52,19 @@ div {
                 width: 95%;
             }
 
-            #og {
+            #og {//original price
                 text-decoration: line-through;
                 font-size: large;
                 width: fit-content;
             }
-            #new {
+            #new {//new price
                 font-size: larger;
                 width: fit-content;
             }
         }
     }
 
-    #main_price {
+    #main_price {//total price
         width: fit-content;
 
         *:first{
@@ -99,6 +102,4 @@ div {
             padding-right: 30px;
         }
     }
-
-    
 }
