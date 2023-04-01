@@ -14,6 +14,7 @@ class DiscountedProduct(Product):
         :param price: intial price of product
         :param image: url of product image
         :param url: url of canadian tire product
+        :param discount: floating point in the range[0,1] that represents the discount on the initial price
         """
         super().__init__(name, rating, price, image, url)
         self.discount = discount
