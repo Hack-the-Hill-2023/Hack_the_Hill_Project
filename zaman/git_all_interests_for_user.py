@@ -3,6 +3,11 @@ import json
 filename = 'zaman\generated.json'
 
 def parser(name):
+    """
+    parser returns a list of intrests for a customer
+    
+    :param name: name of customer
+    """
     fcc_data = None
 
     array = []
