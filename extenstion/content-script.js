@@ -12,6 +12,7 @@ div.classList.add("aem-GridColumn")
 start.parentNode.insertBefore(div, start.nextSibling);
 
 // Create a new iframe element
+// iframe element points handles the front of bundling
 let iframe = document.createElement("iframe")
 
 // Set the CSS styles for the iframe element
