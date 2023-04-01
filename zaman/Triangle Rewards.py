@@ -6,6 +6,7 @@ from numpy import transpose
 import random
 import json
 
+# create a random mock dataset
 def create_dataset():
     listoflists = []
     for x in range(random.randint(1, 15)):
@@ -18,7 +19,7 @@ def create_dataset():
         exec(command_variable)
     return listoflists
 
-
+# the name of the function says it all
 def get_data_from_database(filename):
     # f = open(filename)
     # data=json.load(f)
@@ -36,7 +37,7 @@ def get_data_from_database(filename):
 
 #print(get_data_from_database('generated.json'))
 
-
+# converts dataset into something useable
 def parse(df):
     #DataFrame=pd.DataFrame(columns=[for i in len(df),i])
     lists=df.values.tolist()
@@ -52,31 +53,10 @@ def parse(df):
 
     return DataFrame
 
+# Testing parsing
 print(parse(get_data_from_database('generated.json')))
 
-
-
-# lst=get_data_from_database('generated.json').values.tolist()
-#
-#
-# lst=lst[0]
-# lst=lst[6]
-# print(lst)
-# array=[]
-# for key,value in lst:
-#     while key=="product_category":
-#         array.append(value)
-# print(array)
-#
-#
-# lst=lst[0]
-# print(lst)
-#
-#
-#
-
-
-
+# I don't think anything after this point is useful
 def parsing(filename):
     with open(filename, 'r') as fcc_file:
         fcc_data = json.load(fcc_file)
