@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <img class="canadianTireLogo" src="https://media-www.canadiantire.ca/logo/ct-brandmark-standard-primary-rgw-pos-hex-5f6ce5ad-aadc-44da-9d55-a06d4c6273bb.svg">
 
-
+<!-- We had problems of getting flask to send CSS files -->
 <style>
 *{
     text-overflow: clip;
@@ -95,48 +95,57 @@
     <div class="item">
         <div>
             <p>Product 1 : </p>
+            <!-- Name of product -->
             <p> {{ data.val_1.name }}</p>
         </div>
 
         <div>
             <p>Price : </p>
+            <!-- Original price of product -->
             <p> {{ data.val_1.OG }}</p>
         </div>
 
         <div>
             <p>Price with discount : </p>
+            <!-- New price of product -->
             <p> {{ data.val_1.new }}</p>
         </div>
     </div>
     <div class="item">
         <div>
             <p>Product 2 : </p>
+            <!-- Name of product -->
             <p> {{ data.val_2.name }}</p>
         </div>
 
         <div>
             <p>Price : </p>
+            <!-- Original price of product -->
             <p> {{ data.val_2.OG }}</p>
         </div>
 
         <div>
             <p>Price with discount : </p>
+            <!-- New price of product -->
             <p> {{ data.val_2.new }}</p>
         </div>
     </div>
     <div class="item">
         <div>
             <p>Product 3 : </p>
+            <!-- Name of product -->
             <p> {{ data.val_3.name }}</p>
         </div>
 
         <div>
             <p>Price : </p>
+            <!-- Original price of product -->
             <p> {{ data.val_3.OG }}</p>
         </div>
 
         <div>
             <p>Price with discount : </p>
+            <!-- New price of product -->
             <p> {{ data.val_3.new }}</p>
         </div>
     </div>
